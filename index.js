@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch('https://vsah4cukokahwf7rvsxkto3y2q0jgejn.lambda-url.us-east-1.amazonaws.com')
             .then(response => response.json())
             .then(data => {
+                console.log('Data from Lambda:', data);
                 views = data.views;
                 updateCounter();
             })
@@ -27,4 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Optionally, you can set up an interval to periodically update the counter
     // For example, every 10 seconds
     setInterval(fetchCounter, 10000);
+
+
 });
