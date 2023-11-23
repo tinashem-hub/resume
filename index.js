@@ -16,18 +16,17 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 console.log('Data from Lambda:', data);
-                views = data.views;
+    
+                // Check if 'views' property exists in the response
+                if ('views' in data) {
+                    views = data.views;
+                } else {
+                    console.error('Error: "views" property not found in Lambda response');
+                }
+    
                 updateCounter();
             })
             .catch(error => console.error('Error fetching counter:', error));
     }
-
-    // Initial fetch
-    fetchCounter();
-
-    // Optionally, you can set up an interval to periodically update the counter
-    // For example, every 10 seconds
-    setInterval(fetchCounter, 10000);
-
-
+    
 });
