@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             // Update the visit count on the webpage
-            document.getElementById('visitCount').textContent = `Views: ${data.count}`;
+            document.getElementById('visitCount').textContent = `Views: ${data.views}`;
         })
         .catch(error => {
             console.error('Error fetching visit count:', error);
