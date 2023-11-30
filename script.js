@@ -4,10 +4,16 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             // Update the visit count on the webpage
-            document.getElementById('visitCount').textContent = `Views: ${data.views}`;
+            if (data.views !== undefined) {
+                document.getElementById('visitCount').textContent = `Views: ${data.views}`;
+            } else {
+                console.error('Invalid response format from Lambda function:', data);
+                document.getElementById('visitCount').textContent = 'Error: Invalid response format';
+            }
         })
         .catch(error => {
             console.error('Error fetching visit count:', error);
             document.getElementById('visitCount').textContent = 'Error fetching visit count';
         });
 });
+
